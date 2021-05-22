@@ -439,13 +439,13 @@ class ReactTickets(commands.Cog):
 
             embed = discord.Embed(
                 title=reason,
-                description="To close this ticket, react with 🔒 below.",
+                description="Um das Ticket zu schließen, reagier unten mit:🔒.",
                 timestamp=datetime.datetime.utcnow(),
             )
             embed.set_thumbnail(url=user.avatar_url)
             embed.set_footer(text=f"{user.name}#{user.discriminator} ({user.id})")
             embed_user_message = await user_channel.send(
-                content=f"{user.mention}, a staff member will be with you shortly.",
+                content=f"Vielen Dank für deinen Beitrag {user.mention}, ein Teamer meldet sich schnellstmöglich um dein Problem zu lösen!.",
                 embed=embed,
             )
             await self._add_reactions(embed_user_message, ["🔒", "✋"])
@@ -469,7 +469,7 @@ class ReactTickets(commands.Cog):
             async with self.config.guild(guild).active_msgs() as active_msgs:
                 active_msgs.append(manager_msg.id)
         else:
-            await channel.send("You already have an open ticket.", delete_after=5)
+            await channel.send("Du hast bereits ein Ticket geöffnet!", delete_after=5)
 
     async def _in_active_support(
         self,
@@ -491,7 +491,7 @@ class ReactTickets(commands.Cog):
         )
 
         if not target:
-            await channel.send("User has left the guild. Close this ticket, please.")
+            await channel.send("User hat den Server verlassen. Big Mac, schließ das weg!")
 
         if emoji == "🔒":
             if not target:
@@ -537,7 +537,7 @@ class ReactTickets(commands.Cog):
             await self._edit_manager_msg(
                 manager_msg, "Assigned", True, f"to {user.mention}"
             )
-            await channel.send(f"This ticket has been assigned to {user.mention}.")
+            await channel.send(f"Das Ticket wurde {user.mention} zugewiesen.")
         else:
             await channel.send("Invalid reaction.", delete_after=5)
 
