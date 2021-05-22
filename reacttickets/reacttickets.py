@@ -400,7 +400,7 @@ class ReactTickets(commands.Cog):
         user: discord.Member,
         settings: dict,
     ):
-        name = f"open-{user.id}-{cases[emoji]['title']}"
+        name = f"open-{user.id}"
         category = guild.get_channel(settings["open_category"])
 
         cases = await self.config.guild(guild).cases.get_raw()
