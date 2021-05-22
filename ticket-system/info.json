@@ -1,7 +1,7 @@
 {
-    "author" : ["saurichable", "Dav"],
-    "install_msg" : "Thank you for installing ReactTickets!",
-    "name" : "ReactTickets",
+    "author" : ["ZiggyOnFire", "Dav"],
+    "install_msg" : "Thank you for installing the Ticket-System!",
+    "name" : "Ticket-System",
     "short" : "Reaction based support tickets.",
     "description" : "Reaction based assignable support tickets with custom cases (reasons).",
     "tags" : ["tickets", "support", "reaction", "ticket"],
