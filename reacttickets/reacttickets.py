@@ -227,7 +227,7 @@ class ReactTickets(commands.Cog):
 
         cases = await self.config.guild(ctx.guild).cases.get_raw()
         description = self._get_cases_string(
-            cases, "React below with the reaction based on what you want.\n"
+            cases, "Damit wir dir besser helfen können sag uns doch erst welche Art von Ticket du erstellen möchtest?\n"
         )
 
         embed = discord.Embed(
@@ -445,7 +445,7 @@ class ReactTickets(commands.Cog):
             embed.set_thumbnail(url=user.avatar_url)
             embed.set_footer(text=f"{user.name}#{user.discriminator} ({user.id})")
             embed_user_message = await user_channel.send(
-                content=f"Vielen Dank für deinen Beitrag {user.mention}, ein Teamer meldet sich schnellstmöglich um dein Problem zu lösen!.",
+                content=f"Vielen Dank {user.mention}! Ein Teammitglied wird sich ***hier*** zeitnah melden. Beschreib uns doch bitte in der Zwischenzeit dein Anliegen.",
                 embed=embed,
             )
             await self._add_reactions(embed_user_message, ["🔒", "✋"])
