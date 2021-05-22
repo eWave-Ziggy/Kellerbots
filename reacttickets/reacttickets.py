@@ -400,7 +400,7 @@ class ReactTickets(commands.Cog):
         user: discord.Member,
         settings: dict,
     ):
-        name = f"{cases[emoji]["title"]}{user.id}"
+        name = f"open-{user.id}-{cases[emoji]['title']}"
         category = guild.get_channel(settings["open_category"])
 
         cases = await self.config.guild(guild).cases.get_raw()
@@ -409,7 +409,7 @@ class ReactTickets(commands.Cog):
         reason = cases[emoji]["title"]
 
         found = any(
-            channel.name in [f"{cases[emoji]["title"]}-{user.id}", f"assigned-{user.id}"]
+            channel.name in [f"open-{user.id}", f"assigned-{user.id}"]
             for channel in category.channels
         )
 
@@ -531,7 +531,7 @@ class ReactTickets(commands.Cog):
                 reason="Closed support ticket",
             )
         elif emoji == "✋" and user.id not in settings["active_users"]:
-            if channel.name != f"{cases[emoji]["title"]}{target.id}":
+            if channel.name != f"open{target.id}":
                 return
             await channel.edit(name=f"assigned-{target.id}", reason="Ticket assigned")
             await self._edit_manager_msg(
